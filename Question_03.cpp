@@ -1,30 +1,32 @@
-#include <iostream>
-#include <cmath>
+#include<iostream>
+#include<cmath>
 using namespace std;
+
+// Create a class Triangle. Include overloaded functions for calculating area. Overload assignment operator and equality operator.
 
 class Triangle
 {
 private:
-    float a, b, c, h;
+    float side1;
+    float side2;
+    float side3;
+    float base;
+    float height;
 
 public:
     Triangle() {}
 
     Triangle(float a, float b, float c)
     {
-        this->a = a;
-        this->b = b;
-        this->c = c;
-    }
-    Triangle(float b, float h)
-    {
-        this->b = b;
-        this->h = h;
+        side1 = a;
+        side2 = b;
+        side3 = c;
     }
 
-    float area()
+    Triangle(float b, float h)
     {
-        return area(this->a, this->b, this->c);
+        base = b;
+        height = h;
     }
 
     float area(float a, float b, float c)
@@ -33,55 +35,56 @@ public:
         return sqrt(p * (p - a) * (p - b) * (p - c));
     }
 
-    // overloaded functions
-    float area(float b, float h)
+    float area()
     {
-        return (b + h) / 2;
-    }
-    // Overload assignment operator
-    Triangle &operator=(const Triangle &triangle)
-    {
-        // do the copy
-        this->a = triangle.a;
-        this->b = triangle.b;
-        this->c = triangle.c;
-        return *this;
+        return area(side1, side2, side3);
     }
 
-    // equality operator.
+    float area(float b, float h)
+    {
+        return (b * h) / 2;
+    }
+
+    auto operator=(const Triangle &triangle)
+    {
+        side1 = triangle.side1;
+        side2 = triangle.side2;
+        side3 = triangle.side3;
+    }
+
     friend bool operator==(const Triangle &t1, const Triangle &t2)
     {
-        return (t1.a == t2.a && t1.b == t2.b && t1.c == t2.c);
+        return (t1.side1 == t2.side1 && t1.side2 == t2.side2 && t1.side3 == t2.side3);
     }
 };
 
 int main()
 {
-    int n1 ,n2,n3;
-    cout<<"enter first side:";
+    int n1,n2,n3;
+    cout<<"enter first side: ";
     cin>>n1;
-    cout<<"enter second side:";
+    cout<<"enter second side: ";
     cin>>n2;
-    cout<<"enter third side:";
+    cout<<"enter third side: ";
     cin>>n3;
-    Triangle t1(n1,n2,n3);
-    cout << "Area of the tringle with sides : " << t1.area(n1,n2,n3) << "\n";
+    Triangle triangle_ABC(n1,n2,n3);
+    cout << "Area of the tringle ABC : " << triangle_ABC.area(n1,n2,n3) << endl;
 
-    Triangle t2;
-    cout << "Area of the tringle with base and height : " << t2.area(n3, n1) << "\n";
+    Triangle triangle_PQR(n3, n1);
+    cout << "Area of the tringle_PQR : " << triangle_PQR.area(n3,n1) << endl;
     ;
 
-    Triangle tCopy = t1;
+    Triangle triangle_MNO;
+    triangle_MNO = triangle_ABC;
+    cout << "Area of the tringle MNO : " << triangle_MNO.area() << endl;
 
-    cout << "Area of the copy tringle " << tCopy.area() << "\n";
-
-    if (t1 == tCopy)
+    if (triangle_ABC == triangle_MNO)
     {
-        cout << "The triangles are equal.\n";
+        cout << "Triangles are equal.\n";
     }
     else
     {
-        cout << "The triangles are not equal.\n";
+        cout << "Triangles are not equal.\n";
     }
 
     return 0;
