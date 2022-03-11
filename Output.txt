@@ -1,0 +1,30 @@
+Roll No     : 1
+Name        :aditya
+Class       : 4
+Year        : 1
+Total Marks : 55
+
+Roll No     : 2
+Name        :subham
+Class       : 5
+Year        : 2
+Total Marks : 22
+
+Roll No     : 3
+Name        :kundan
+Class       : 5
+Year        : 2
+Total Marks : 100
+
+Roll No     : 4
+Name        :shreya
+Class       : 2
+Year        : 1
+Total Marks : 77
+
+Roll No     : 5
+Name        :shankar
+Class       : 5
+Year        : 3
+Total Marks : 96
+
